@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_user/features/user/presentation/state_management/binding/home_page_binding.dart';
 import 'package:flutter_user/main_presentation/home_page.dart';
 import 'package:get/get.dart';
 
@@ -18,10 +19,9 @@ class MyApp extends StatelessWidget {
       initialRoute: "/homePage",
       getPages: [
         GetPage(
-          name: "/homePage",
-          page: () => HomePage(),
-          // binding:
-        )
+            name: "/homePage",
+            page: () => HomePage(),
+            binding: HomePageBinding())
       ],
     );
   }

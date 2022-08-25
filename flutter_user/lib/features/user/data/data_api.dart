@@ -10,23 +10,29 @@ class DataApi {
     print("deneme printi");
   }
 
-  static Future<void> response1() async {
-    Uri uri = Uri.parse("$httplocalhost/api/get?documentId=user_1");
+  static Future<MyUser> response1(MyUser myUser) async {
+    Uri uri =
+        Uri.parse("$httplocalhost/api/get?documentId=" + myUser.documentId!);
 
     http.Response response = await http.get(uri);
-    print("gelen user1 : ");
+    print("gelen " + myUser.documentId! + " : ");
     print(response.body);
     // return response;
+
+    if (response.body == "") {
+      return MyUser.empty();
+    }
+    return MyUser.fromJson(response.body);
   }
 
-  static Future<void> response2() async {
-    Uri uri = Uri.parse("$httplocalhost/api/get?documentId=user_2");
+  // static Future<void> response2() async {
+  //   Uri uri = Uri.parse("$httplocalhost/api/get?documentId=user_2");
 
-    http.Response response = await http.get(uri);
-    print("gelen user2 : ");
-    print(response.body);
-    // return response;}
-  }
+  //   http.Response response = await http.get(uri);
+  //   print("gelen user2 : ");
+  //   print(response.body);
+  //   // return response;}
+  // }
 
   static Future<void> createUser(MyUser myUser) async {
     Uri uri = Uri.parse("$httplocalhost/api/create");

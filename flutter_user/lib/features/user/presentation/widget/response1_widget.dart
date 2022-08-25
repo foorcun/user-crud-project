@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_user/features/user/data/data_api.dart';
+import 'package:flutter_user/features/user/domain/entity/my_user.dart';
+import 'package:flutter_user/features/user/presentation/state_management/controller/my_user_controller.dart';
+import 'package:get/get.dart';
 
 class Response1 extends StatelessWidget {
   const Response1({Key? key}) : super(key: key);
@@ -12,7 +15,9 @@ class Response1 extends StatelessWidget {
     return ElevatedButton(
         onPressed: () async {
           // DataApi.printTest();
-          DataApi.response1();
+          // DataApi.response1();
+          String json = '{"documentId": "user_1"}';
+          Get.find<MyUserController>().getUser(MyUser.fromJson(json));
         },
         child: Text("Response1"));
   }

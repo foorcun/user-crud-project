@@ -5,6 +5,8 @@ class MyUser {
   String? name;
   String? profession;
 
+  MyUser.empty();
+
   MyUser({
     this.documentId,
     this.name,
