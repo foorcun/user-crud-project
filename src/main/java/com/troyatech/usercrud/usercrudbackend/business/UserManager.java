@@ -34,4 +34,24 @@ public class UserManager implements IUserService {
     public List<MyUser> getAllUser() throws ExecutionException, InterruptedException {
      return   userDal.getAllUser();
     }
+
+    @Override
+    public MyUser getById(String documentId) throws ExecutionException, InterruptedException {
+        return userDal.getById(documentId);
+    }
+
+    @Override
+    public String createMyUser(MyUser myUser) throws ExecutionException, InterruptedException {
+        return userDal.createMyUser(myUser);
+    }
+
+    @Override
+    public String updateMyUser(MyUser myUser) throws ExecutionException, InterruptedException {
+        return userDal.updateMyUser(myUser);
+    }
+
+    @Override
+    public String deleteMyUser(String documentId) {
+        return userDal.deleteMyUser(documentId);
+    }
 }
