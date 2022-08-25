@@ -28,4 +28,17 @@ class MyUserController extends GetxController {
   Future<void> deleteUser(MyUser myUser) async {
     DataApi.deleteUser(myUser);
   }
+
+  Future<List<MyUser>> getAllUser() async {
+    var v = await DataApi.getAllUser();
+
+    print(userlar.length);
+    // for (var fff in v) {
+    //   userlar.value.add(fff);
+    // }
+    userlar.assignAll(v);
+    print(userlar.length);
+
+    return userlar;
+  }
 }

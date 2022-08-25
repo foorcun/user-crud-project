@@ -34,4 +34,8 @@ class MyUser {
   factory MyUser.fromJson(String source) {
     return MyUser.fromMap(json.decode(source));
   }
+
+  @override
+  String toString() =>
+      'MyUser(documentId: $documentId, name: $name, profession: $profession)';
 }

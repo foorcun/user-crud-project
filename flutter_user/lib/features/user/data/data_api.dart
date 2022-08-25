@@ -103,4 +103,35 @@ class DataApi {
     print("deleteUser response");
     print(response.body);
   }
+
+  static Future<List<MyUser>> getAllUser() async {
+    // static Future<void> getAllUser() async {
+    Uri uri = Uri.parse("$httplocalhost/api/getAll");
+
+    http.Response response = await http.get(uri);
+    print("gelen getAllUser ");
+    print(response.body);
+
+    List<MyUser> list = [];
+
+    if (response.body == "") {
+      return list;
+    }
+
+    List<dynamic> v = jsonDecode(response.body);
+    print("gelen degerler :");
+
+    // print(v[0]);
+    for (Map<String, dynamic> map in v) {
+      // print(map);
+
+      list.add(MyUser.fromMap(map));
+      print(MyUser.fromMap(map).toString());
+    }
+    // return MyUser.fromJson(response.body);
+
+    return list;
+
+    // return response;
+  }
 }
